@@ -1,0 +1,7 @@
+# Geometric Algorithms Project dependencies
+
+# Numerical computations
+numpy>=1.19.0
+
+# Plotting and visualization
+matplotlib>=3.3.0

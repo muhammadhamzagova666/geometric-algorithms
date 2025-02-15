@@ -1,0 +1,214 @@
+% tex
+% --------------------------------------------------------------------------------
+% Geometric Algorithms Project Report
+% This document describes the implementation and analysis of geometric
+% algorithms, focusing on line segment intersection and convex hull computation.
+% The report details the design choices, experimental setup, results, and discussion.
+% Target Users: Developers and researchers in computational geometry.
+% --------------------------------------------------------------------------------
+
+\documentclass[a4paper, 10pt, twocolumn]{article}
+
+% Input encoding for non-ASCII characters.
+\usepackage[utf8]{inputenc}
+% Font encoding to ensure proper font rendering.
+\usepackage[T1]{fontenc}
+% Graphic inclusion for logos and images.
+\usepackage{graphicx}
+\usepackage{lipsum}
+% Page geometry settings for consistent margins.
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{times}
+% Hyperlinks for references.
+\usepackage{hyperref}
+
+% Set margins consistently across the document.
+\geometry{a4paper, margin=0.75in}
+% \geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}  % Alternative margin specification
+
+\begin{document}
+
+% --------------------------------------------------------------------------------
+% Title Page: Contains project title, logos, author(s), and other vital information.
+% --------------------------------------------------------------------------------
+\begin{titlepage}
+    \centering
+    \vspace{3.5cm}
+    % Include the university logo.
+    \includegraphics[width=0.5\textwidth]{NU-logo.jpg}\par\vspace{1cm}
+    % Include the FAST logo.
+    \includegraphics[width=0.5\textwidth]{FAST.png}\par\vspace{1cm}
+    \vspace{1cm}
+    % Main Title of the Project Report.
+    {\scshape\Huge\textbf {Geometric Algorithms} \par}
+    {\scshape\Huge\textbf {(Line Intersection \& Convex Hull)} \par}
+    \vspace{1cm}
+    % Subtitle and project report type.
+    {\scshape\Large Project Report \par}
+    \vspace{1cm}
+    % Information about the supervising professor.
+    {\scshape\Large Professor Dr. Farrukh Salim (BCS-5E) \par}
+    \vspace{1cm}
+    % Course and section details.
+    {\scshape\Large Design \& Analysis of Algorithms (CS-2009) \par}
+    \vspace{1cm}
+    % List of group members.
+    {\scshape\Large Muhammad Talha (K21-3349) \\ Muhammad Hamza (K21-4579) \\ Muhammad Salar (K21-4619) \par}
+    \vfill
+    \vspace{1cm}    
+    % Institutional information.
+    {Foundation of Advancement of Science and Technology \par}
+    {National University of Computer and Emerging Sciences \par}
+    {Department of Computer Science \par}
+    {Karachi, Pakistan \par}
+    {Monday, November 27, 2023 \par}
+\end{titlepage}
+
+% --------------------------------------------------------------------------------
+% Abstract: Summarizes the goals, methodology, and significance of the project.
+% --------------------------------------------------------------------------------
+\onecolumn
+\begin{abstract}
+% The abstract communicates the scope and focus areas for the project.
+This project focuses on the implementation and analysis of geometric algorithms with varying computational complexities. 
+Two main problems are addressed:
+\begin{itemize}
+    \item determining the intersection of two line segments.
+    \item solving the Convex Hull problem using different algorithms.
+\end{itemize}
+The programming design is implemented in Python and demonstrated using a Jupyter Notebook. 
+The experimental setup involves visual demonstration, time complexity measurements, and performance comparisons.
+\end{abstract}
+
+\vspace{1.5cm}
+\tableofcontents
+
+\twocolumn
+% --------------------------------------------------------------------------------
+% Introduction: Provides an overview and contextual background for the project.
+% --------------------------------------------------------------------------------
+\section{Introduction}
+% The introduction contextualizes the significance of geometric algorithms in areas such as computer graphics and computational geometry.
+Geometric algorithms play a crucial role in various applications, from computer graphics to computational geometry. 
+This project delves into two specific problems: line segment intersection and Convex Hull computation. 
+The line segment intersection problem explores techniques such as counter-clockwise operations, vector cross products, and the line sweep method; 
+while the Convex Hull problem is addressed via brute force, Jarvis-March, Graham scan, Quick Hull, and Monotone Chain methods.
+
+% --------------------------------------------------------------------------------
+% Programming Design: Details the design decisions, algorithm choices, and implementation rationale.
+% --------------------------------------------------------------------------------
+\section{Programming Design}
+The implementation is conducted using Python, chosen for its suitability in handling geometric computations. 
+This section delves into the thoughtful design choices made, emphasizing clarity and efficiency in the implementation.
+
+\textbf{Line Segment Intersection:} 
+The problem is tackled using multiple techniques:
+\begin{itemize}
+  \item \textit{Counter-clockwise (CCW):} Utilizes the orientation of points for intersection detection.
+  \item \textit{Vector Cross Product:} Leverages directional cross products to assess point positions.
+  \item \textit{Line Sweep:} Enhances efficiency by sorting events along a sweep line to detect intersecting segments.
+\end{itemize}
+
+\textbf{Convex Hull Computation:}
+A selection of algorithms is employed, each highlighting different strengths:
+\begin{itemize}
+  \item \textit{Brute Force:} Provides a baseline check for correctness despite its computational intensity.
+  \item \textit{Jarvis-March:} Constructs the hull by selecting points with minimal polar angles.
+  \item \textit{Graham Scan:} Efficiently forms the hull by sorting points angularly.
+  \item \textit{Quick Hull:} Implements a divide-and-conquer strategy to recursively build hulls.
+  \item \textit{Monotone Chain:} Separately computes the upper and lower hulls before merging them.
+\end{itemize}
+
+% --------------------------------------------------------------------------------
+% Experimental Setup: Explains the testing framework and the method used to measure algorithm performance.
+% --------------------------------------------------------------------------------
+\section{Experimental Setup}
+The program visually renders objects on the screen by selecting random points.
+Each algorithm's steps and internal workings are clearly outlined, and the methods used for calculating time and space complexities are described.
+This ensures a comprehensive understanding of both the theoretical and practical performance of the solution.
+
+\newpage
+% --------------------------------------------------------------------------------
+% Results and Discussion: Presents performance data and analyses the strengths and weaknesses of the algorithms.
+% --------------------------------------------------------------------------------
+\section{Results and Discussion}
+Execution times for each algorithm are provided, allowing for a detailed comparison based on their computational complexities. 
+The discussion highlights the merits and potential drawbacks of each method, supported by data in the following sections.
+
+\subsection{Line Intersection}
+% The table below summarizes the performance metrics for the different line intersection approaches.
+\begin{center}
+  \centering
+  \begin{tabular}{|c|c|}
+    \hline
+    \textbf {Algorithm} & \textbf {Time Taken} \\
+    \hline
+    Counter-Clockwise & 0.0000066757\\
+    \hline
+    Vector Cross Product & 0.0000071526\\
+    \hline
+    Line Sweep & 0.0023283958\\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsection{Convex Hull}
+% The table below presents the time complexities, execution times, and dataset sizes used for convex hull computation.
+\begin{center}
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    \textbf {Algorithm} & \textbf {Time Complexity} & \textbf {Time Taken} & \textbf {Data-set}\\
+    \hline %0.0029921532
+    Graham Scan & O($nLog(n)$) & $2.992*10^{-3}$ & 500\\
+    \hline %5.74589e-05
+    Jarvis-March & O($nh$) & $5.746*10^{-5}$ & 500\\
+    \hline %0.0036790371
+    Quick Hull & O($nLog(n)$) & $3.679*10^{-3}$ & 500\\
+    \hline %0.0009784698
+    Monotone Chain & O($nLog(n)$) & $9.785*10^{-4}$ & 500\\
+    \hline %2264.9023439884
+    Brute Force & O($n^3$) & $2.264*10^{3}$ & 500\\
+    \hline
+  \end{tabular}
+\end{center}
+
+% --------------------------------------------------------------------------------
+% Conclusion: Summarizes the project findings and outlines future research directions.
+% --------------------------------------------------------------------------------
+\section{Conclusion}
+% The conclusion recaps the key insights and suggests areas for further improvement.
+The project concludes by summarizing the key findings and insights gained through the implementation and analysis of geometric algorithms. 
+Noteworthy observations include:
+\begin{itemize}
+    \item \textbf{Unexpected Observations:}\\
+    Some algorithms displayed varying performance depending on input data characteristics. For example, Quick Hull showed exceptional speed on well-distributed points but struggled with pathological cases.
+    \item \textbf{Challenges Faced:}\\
+    Fine-tuning Quick Hull to handle edge cases effectively was challenging. Balancing a divide-and-conquer approach with efficient merging strategies requires additional exploration.
+    \item \textbf{Potential Areas for Future Research or Improvements:}\\
+    \begin{enumerate}
+        \item \textit{Dynamic Input Handling:}\\ 
+          Extending the system to work with real-time, dynamic data may improve practical utility. Investigating algorithms that support incremental input could be beneficial.
+        \item \textit{Parallelization for Efficiency:}\\ 
+          Exploring parallel computing frameworks or algorithms optimized for parallel execution could further enhance performance.
+        \item \textit{Hybrid Approaches:}\\ 
+          Combining methods such as Jarvis-March and Quick Hull might yield a more robust and efficient convex hull computation solution.
+    \end{enumerate}
+\end{itemize}
+
+% --------------------------------------------------------------------------------
+% References: Provides links and citations for further reading and algorithm background.
+% --------------------------------------------------------------------------------
+\section{References}
+\begin{itemize}
+    \item \href{https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain}{WikiBooks (Monotone Chain Algorithm 1)}
+    \item \href{https://www.geeksforgeeks.org/convex-hull-monotone-chain-algorithm/}{GeekForgeeks (Monotone Chain Algorithm 2)}
+    \item \href{https://en.wikipedia.org/wiki/Sweep_line_algorithm}{Wikipedia (Line Sweep Algorithm 1)}
+    \item \href{https://www.geeksforgeeks.org/closest-pair-of-points-using-sweep-line-algorithm/}{GeekForgeeks (Line Sweep Algorithm 2)}
+    \item \href{https://en.wikipedia.org/wiki/Quickhull}{Wikipedia (QuickHull Algorithm 1)}
+    \item \href{https://www.geeksforgeeks.org/quickhull-algorithm-convex-hull/}{GeekForgeeks (QuickHull Algorithm 2)}
+    \item \href{Introduction to Algorithms by Thomas H. Cormen}{Introduction to Algorithms by Thomas H. Cormen (Reference Book)}
+\end{itemize}
+
+\end{document}
